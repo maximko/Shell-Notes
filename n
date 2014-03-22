@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Set your own notes folder path here
+NOTESDIR=~/Dropbox/Notes
+
+# Checking Notes folder
+if [[ ! -d $NOTESDIR ]]; then
+    echo "Directory $NOTESDIR does not exist."
+    exit 1
+fi    
+
+case "$1" in
+    "l" | "ls")
+        ls $NOTESDIR
+    ;;
+    "")
+        echo "Usage: $0 [l, ls or filename]"
+    ;;
+    *)
+        vim $NOTESDIR/$1
+    ;;
+esac
